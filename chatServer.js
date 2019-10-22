@@ -30,7 +30,7 @@ io.on('connect', function(socket) {
   var questionNum = 0; // keep count of question, used for IF condition.
   socket.on('loaded', function() { // we wait until the client has loaded and contacted us that it is ready to go.
 
-    socket.emit('answer', "Hey, hello I am \"___*-\" a simple chat bot example."); //We start with the introduction;
+    socket.emit('answer', "Hey, hello I am \"Jokester\" a simple chat bot example."); //We start with the introduction;
     setTimeout(timedQuestion, 5000, socket, "What is your name?"); // Wait a moment and respond with a question.
 
   });
@@ -53,38 +53,108 @@ function bot(data, socket, questionNum) {
   if (questionNum == 0) {
     answer = 'Hello ' + input + ' :-)'; // output response
     waitTime = 5000;
-    question = 'How old are you?'; // load next question
+    question = 'How are you today?'; // load next question
   } else if (questionNum == 1) {
-    answer = 'Really, ' + input + ' years old? So that means you were born in: ' + (2018 - parseInt(input)); // output response
-    waitTime = 5000;
-    question = 'Where do you live?'; // load next question
-  } else if (questionNum == 2) {
-    answer = 'Cool! I have never been to ' + input + '.';
-    waitTime = 5000;
-    question = 'Whats your favorite color?'; // load next question
-  } else if (questionNum == 3) {
-    answer = 'Ok, ' + input + ' it is.';
-    socket.emit('changeBG', input.toLowerCase());
-    waitTime = 5000;
-    question = 'Can you still read the font?'; // load next question
-  } else if (questionNum == 4) {
-    if (input.toLowerCase() === 'yes' || input === 1) {
-      answer = 'Perfect!';
+    if (input=="good")
+    {
+      answer = "That\'s great! Let\'s make it even better with some jokes :)";
       waitTime = 5000;
-      question = 'Whats your favorite place?';
-    } else if (input.toLowerCase() === 'no' || input === 0) {
-      socket.emit('changeFont', 'white'); /// we really should look up the inverse of what we said befor.
-      answer = ''
-      question = 'How about now?';
-      waitTime = 0;
-      questionNum--; // Here we go back in the question number this can end up in a loop
-    } else {
-      question = 'Can you still read the font?'; // load next question
-      answer = 'I did not understand you. Could you please answer "yes" or "no"?'
-      questionNum--;
-      waitTime = 5000;
+      question = "Are you ready?";
     }
-    // load next question
+    else if(input=="not good")
+    {
+      answer = "I\'m sorry to hear that! Let's cheer you up with some jokes! :)";
+      waitTime = 5000;
+      question = "Are you ready?";
+    }
+    else
+    {
+      answer = "I did not understand that response. Could you please respond with \'good\' or \'not good\'";
+      waitTime = 5000;
+      question = "How are you today?";
+      questionNum--;
+    }
+  } else if (questionNum == 2) {
+    if(input == "yes")
+    {
+      answer = "That\'s the spirit! Here\'s the first joke. \'I hate Russian dolls, they\'re so full of themselves\'";
+      waitTime = 7000;
+      question = "Did you like that joke?"
+    }
+    else if (input == "no")
+    {
+      answer = "Come on! Let's get excited! Here\'s the first joke. \'I hate Russian dolls, they're so full of themselves\'";
+      waitTime = 7000;
+      question = "Did you like that joke?";
+    }
+    else
+    {
+     answer = "I did not understand that response. Could you please respond with \'yes\' or \'no\'";
+     waitTime = 5000;
+     question = "Are you ready?";
+     questionNum--;
+    }
+  } else if (questionNum == 3) {
+    if(input == "yes")
+    {
+      answer = "Good, I\'m glad! Next joke... \'Velcro - what a rip-off!\'";
+      waitTime = 6000;
+      question = "Did you like that joke?";
+    }
+    else if (input == "no")
+    {
+     answer = "Bummer, I\'m sad to hear that. Next joke... \'Velcro - what a rip-off!\'";
+     waitTime = 6000;
+     question = "Did you like that joke?";
+    }
+    else
+    {
+      answer = "I did not understand that response. Could you please respond with \'yes\' or \'no\'";
+      waitTime = 5000;
+      question = "Did you like that joke?";
+      questionNum--;
+    }
+  } else if (questionNum == 4) {
+    if(input == "yes")
+    {
+      answer = "I\'m glad! Next joke... \'To the man on crutches, dressed in camouflage, who stole my wallet - you can hide, but you can\'t run\'";
+      waitTime = 7000;
+      question = "Did you like that joke?";
+    }
+    else if (input == "no")
+    {
+      answer = "Bummer! Next joke... \'To the man on crutches, dressed in camouflage, who stole my wallet - you can hide, but you can\'t run\'";
+      waitTime = 7000;
+      question = "Did you like that joke?";
+    }
+    else
+    {
+      answer = "I did not understand that response. Could you please respond with \'yes\' or \'no\'";
+      waitTime = 5000;
+      question = "Did you like that joke?";
+      questionNum--;
+    }
+  } else if(questionNum ==5) {
+    if(input == "yes")
+    {
+      answer = "I\'m glad! Last joke... \'The first time I got a universal remote control I thought to myself...This changes everything\'";
+      waitTime = 7000;
+      question = "Did you like that joke?";
+    }
+    else if(input == "no")
+    {
+      answer = "Bummer! Last joke... \'The first time I got a universal remote control I thought to myself...This changes everything\'";
+      waitTime = 7000;
+      question = "Did you like that joke?";
+    }
+    else
+    {
+      answer = "I did not understand that response. Could you please respond with \'yes\' or \'no\'";
+      waitTime = 5000;
+      question = "Did you like that joke?";
+      questionNum--;
+    }
+
   } else {
     answer = 'I have nothing more to say!'; // output response
     waitTime = 0;
