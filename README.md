@@ -4,7 +4,7 @@
 
 ## Make the ChatBot your own
 
-The major changes made to the chatbot were to verify all answers, and to replace questions and statements with jokes and evaluating if the user liked them or not. THe ultimate goal was to get a quick laugh and smile on someone's face using the chatbot. 
+The major changes made to the chatbot were to verify all answers, and to replace questions and statements with jokes and evaluating if the user liked them or not. To do so, I either asker the user if they were ready or not, and whether they liked the joke. yes no responses were accepted, otherwise the user was reprompted. The ultimate goal was to get a quick laugh and smile on someone's face using the chatbot. 
 
 ## Record someone trying out your ChatBot
 
